@@ -20,11 +20,11 @@ struct SkipInfoTests {
   }
 
   @Test("sourceLocation property") func sourceLocation() {
-    let sourceLocation1 = SourceLocation()
+    let sourceLocation1 = #here
     var skipInfo = SkipInfo(sourceContext: .init(sourceLocation: sourceLocation1))
     #expect(skipInfo.sourceLocation == sourceLocation1)
 
-    let sourceLocation2 = SourceLocation()
+    let sourceLocation2 = #here
     skipInfo.sourceLocation = sourceLocation2
     #expect(skipInfo.sourceLocation == sourceLocation2)
   }

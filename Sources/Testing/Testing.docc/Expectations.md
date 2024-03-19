@@ -41,7 +41,7 @@ you can't check directly using an expectation.
 
 ### Confirming that asynchronous events occur
 
-- ``confirmation(_:expectedCount:fileID:filePath:line:column:_:)``
+- ``confirmation(_:expectedCount:sourceLocation:_:)``
 - ``Confirmation``
 
 ### Retrieving information about checked expectations
@@ -53,5 +53,6 @@ you can't check directly using an expectation.
 ### Representing source locations
 
 - ``SourceLocation``
+- ``here()``
 - ``SourceContext``
 - ``Backtrace``

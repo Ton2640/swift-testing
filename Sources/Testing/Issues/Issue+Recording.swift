@@ -107,12 +107,8 @@ extension Issue {
   /// or ``require(_:_:sourceLocation:)-5l63q`` macros.)
   @discardableResult public static func record(
     _ comment: Comment? = nil,
-    fileID: String = #fileID,
-    filePath: String = #filePath,
-    line: Int = #line,
-    column: Int = #column
+    sourceLocation: SourceLocation = #here
   ) -> Self {
-    let sourceLocation = SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
     let sourceContext = SourceContext(backtrace: .current(), sourceLocation: sourceLocation)
     let issue = Issue(kind: .unconditional, comments: Array(comment), sourceContext: sourceContext)
     return issue.record()
@@ -137,12 +133,8 @@ extension Issue {
   @discardableResult public static func record(
     _ error: any Error,
     _ comment: Comment? = nil,
-    fileID: String = #fileID,
-    filePath: String = #filePath,
-    line: Int = #line,
-    column: Int = #column
+    sourceLocation: SourceLocation = #here
   ) -> Self {
-    let sourceLocation = SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
     let backtrace = Backtrace(forFirstThrowOf: error) ?? Backtrace.current()
     let sourceContext = SourceContext(backtrace: backtrace, sourceLocation: sourceLocation)
     let issue = Issue(kind: .errorCaught(error), comments: Array(comment), sourceContext: sourceContext)
